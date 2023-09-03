@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
     res.json('hello from api')
 })
 
-const PORT = 8000;
+const PORT = 4000;
 
 app.listen(PORT, () => {
     console.log(`app is running on port ${PORT}`)

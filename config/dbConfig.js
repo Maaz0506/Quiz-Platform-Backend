@@ -1,7 +1,7 @@
 module.exports = {
     HOST :'localhost',
     USER : 'root',
-    PASSWORD : '',
+    PASSWORD : 'root',
     DB: 'quiz-platform',
     dialect : 'mysql'
 }
