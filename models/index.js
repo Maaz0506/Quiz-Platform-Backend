@@ -8,7 +8,7 @@ const sequelize = new Sequelize (
     dbConfig.PASSWORD,{
         host : dbConfig.HOST,
         dialect : dbConfig.dialect,
-        operatorsAliases : false
+        // operatorsAliases : false
     }
 )
 
@@ -25,10 +25,11 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.user = require('./userModel.js'),(sequelize,DataTypes);
-db.questions = require('./quesModel.js'),(sequelize,DataTypes);
-db.answers = require('./ansModel.js'),(sequelize,DataTypes);
-db.score = require('./scoreModel.js'),(sequelize,DataTypes);
+db.user = require('./userModel.js')(sequelize,DataTypes);
+db.questions = require('./quesModel.js')(sequelize,DataTypes);
+db.answers = require('./ansModel.js')(sequelize,DataTypes);
+db.score = require('./historyModel.js')(sequelize,DataTypes);
+db.score = require('./typeModel.js')(sequelize,DataTypes);
 
 
 db.sequelize.sync({ force:false })
