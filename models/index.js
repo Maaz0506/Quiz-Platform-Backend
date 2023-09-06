@@ -25,8 +25,8 @@ db.answer = require("./ansModel.js")(sequelize, DataTypes);
 db.score = require("./scoreModel.js")(sequelize, DataTypes);
 db.type = require("./typeModel.js")(sequelize, DataTypes);
 
-// db.sequelize.sync({ force: false }).then(() => {
-//   console.log("Successfully Synced");
-// });
+db.sequelize.sync({ force: false }).then(() => {
+  console.log("Successfully Synced");
+});
 
 module.exports = db;

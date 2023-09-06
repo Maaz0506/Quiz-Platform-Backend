@@ -1,9 +1,11 @@
 const db = require("../models");
 const Question = db.question;
+const { v4: uuidv4 } = require("uuid");
+
 
 const addQuestions = async (req, res) => {
   let info = {
-    questionId: req.body.questionId,
+    questionId:uuidv4(),
     questionText: req.body.questionText,
     quizId: req.body.quizId,
   };

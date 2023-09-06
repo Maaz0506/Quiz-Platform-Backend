@@ -7,3 +7,4 @@ router.post("/addScore", scoreController.addScore);
 router.get("/getScores", scoreController.getScores);
 
 router.get("/:id", scoreController.scoreById);
+module.exports = router;
