@@ -11,6 +11,7 @@ require("./models");
 const app = express();
 const config = require("./config/config.js");
 const { Sequelize, DataTypes } = require("sequelize");
+const verifyJwt=require("./middleware/verifyJwt.js")
 
 
 // Database Connection
@@ -32,11 +33,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routers
-app.use("/api/question", questionRouter);
-app.use("/api/answer", answerRouter);
-app.use("/api/score/", scoreRouter);
-app.use("/api/type", typeRouter);
 app.use("/api/auth/", userRouter);
+// app.use(verifyJwt)
+app.use("/api/question/", questionRouter);
+app.use("/api/answer/", answerRouter);
+app.use("/api/score/", scoreRouter);
+app.use("/api/type/", typeRouter);
 
 // testing
 app.get("/", (req, res) => {

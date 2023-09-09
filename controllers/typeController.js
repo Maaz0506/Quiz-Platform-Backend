@@ -5,6 +5,8 @@ const addType = async (req, res) => {
   let info = {
     quizId: req.body.quizId,
     quizName: req.body.quizName,
+    description:req.body.description,
+    imageUrl:req.body.imageUrl
   };
 
   const type = await Type.create(info);
