@@ -9,6 +9,5 @@ router.post("/login", login.handleLogin);
 
 router.get("/getAll", users.getAllUsers);
 
-router.post("/update", login.updateUser);
 
 module.exports = router;

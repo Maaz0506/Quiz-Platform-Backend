@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       primaryKey: true,
       unique: true,
-      autoIncrement:true
     },
     questionText: { type: DataTypes.STRING, allowNull: false },
     quizId: {
@@ -13,6 +12,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       references: { model: "types", key: "quizId" },
     },
+    option1: { type: DataTypes.STRING, allowNull: false },
+    option2: { type: DataTypes.STRING, allowNull: false },
+    option3: { type: DataTypes.STRING, allowNull: false },
+    option4: { type: DataTypes.STRING, allowNull: false },
+    isCorrect: { type: DataTypes.STRING, allowNull: false },
   });
   return Question;
 };

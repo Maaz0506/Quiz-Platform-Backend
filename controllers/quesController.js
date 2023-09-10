@@ -3,11 +3,17 @@ const Question = db.question;
 const { v4: uuidv4 } = require("uuid");
 const {QueryTypes}=require("sequelize")
 
-const addQuestions = async (req, res) => {
+const addQuestionAnswer = async (req, res) => {
   let info = {
-    questionId: uuidv4(),
+
     questionText: req.body.questionText,
     quizId: req.body.quizId,
+    questionId: req.body.questionId,
+    option1:req.body.option1,
+    option2:req.body.option2,
+    option3:req.body.option3,
+    option4:req.body.option4,
+    isCorrect:req.body.isCorrect
   };
 
   const question = await Question.create(info);
@@ -26,15 +32,18 @@ const questionById = async (req, res) => {
 };
 
 const questionsWithAnswers = async (req, res) => {
+  const {quizId}=req.query
+  console.log(quizId)
   const questionwithAnswer = await db.sequelize.query(
-    "SELECT Q.questionText,A.answerText,A.isCorrect from questions Q,answers A where Q.questionId=A.questionId ",
-    { type: QueryTypes.SELECT }
+    `SELECT questionText,quizId,option1,option2,option3,option4,isCorrect from questions where quizId=${quizId}`,
+        { type: QueryTypes.SELECT }
   );
+  // console.log(quizId)
   res.status(200).send(questionwithAnswer)
 };
 
 module.exports = {
-  addQuestions,
+  addQuestionAnswer,
   getAllQuestions,
   questionById,
   questionsWithAnswers
