@@ -36,7 +36,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth/", userRouter);
 // app.use(verifyJwt)
 app.use("/api/question/", questionRouter);
-// app.use("/api/answer/", answerRouter);
+app.use("/api/answer/", answerRouter);
 app.use("/api/score/", scoreRouter);
 app.use("/api/type/", typeRouter);
 

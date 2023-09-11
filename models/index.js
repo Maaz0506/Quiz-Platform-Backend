@@ -21,7 +21,7 @@ db.Sequelize = Sequelize;
 
 db.user = require("./userModel.js")(sequelize, DataTypes);
 db.question = require("./quesModel.js")(sequelize, DataTypes);
-// db.answer = require("./ansModel.js")(sequelize, DataTypes);
+db.answer = require("./ansModel.js")(sequelize, DataTypes);
 db.score = require("./scoreModel.js")(sequelize, DataTypes);
 db.type = require("./typeModel.js")(sequelize, DataTypes);
 

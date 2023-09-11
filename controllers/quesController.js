@@ -3,17 +3,13 @@ const Question = db.question;
 const { v4: uuidv4 } = require("uuid");
 const {QueryTypes}=require("sequelize")
 
-const addQuestionAnswer = async (req, res) => {
+const addQuestion = async (req, res) => {
   let info = {
-
+    id:uuidv4(),
     questionText: req.body.questionText,
     quizId: req.body.quizId,
     questionId: req.body.questionId,
-    option1:req.body.option1,
-    option2:req.body.option2,
-    option3:req.body.option3,
-    option4:req.body.option4,
-    isCorrect:req.body.isCorrect
+  
   };
 
   const question = await Question.create(info);
@@ -26,8 +22,9 @@ const getAllQuestions = async (req, res) => {
 };
 
 const questionById = async (req, res) => {
-  let id = req.params.id;
-  const question = await Question.findOne({ where: { id: id } });
+  let quizId = req.params.quizId;
+  console.log(quizId)
+  const question = await Question.findAll({ where: { quizId: quizId } });
   res.status(200).send(question);
 };
 
@@ -43,7 +40,7 @@ const questionsWithAnswers = async (req, res) => {
 };
 
 module.exports = {
-  addQuestionAnswer,
+  addQuestion,
   getAllQuestions,
   questionById,
   questionsWithAnswers
