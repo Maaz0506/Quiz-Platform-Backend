@@ -5,5 +5,5 @@ router.post("/addType", typeController.addType);
 
 router.get("/getTypes", typeController.getTypes);
 
-router.get("/:id", typeController.typeById);
+router.get("/:quizId", typeController.typeById);
 module.exports = router;

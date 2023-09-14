@@ -19,8 +19,8 @@ const getTypes = async (req, res) => {
 };
 
 const typeById = async (req, res) => {
-  let id = req.params.id;
-  const type = await Type.findOne({ where: { id: id } });
+  let quizId = req.params.quizId;
+  const type = await Type.findAll({ where: { quizId: quizId } });
   res.status(200).send(type);
 };
 

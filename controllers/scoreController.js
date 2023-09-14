@@ -1,13 +1,13 @@
 const db = require("../models");
 const Score = db.score;
+const {v4:uuidv4}=require("uuid")
 
 const addScore = async (req, res) => {
   let info = {
-    scoreId: req.body.scoreId,
-    userId: req.body.userId,
+    scoreId: uuidv4(),
+    email:req.body.email,
     quizId: req.body.quizId,
     score: req.body.score,
-    playedAt: req.body.playedAt,
   };
 
   const score = await Score.create(info);
@@ -20,8 +20,8 @@ const getScores = async (req, res) => {
 };
 
 const scoreById = async (req, res) => {
-  let id = req.params.id;
-  const score = await Score.findOne({ where: { id: id } });
+  const email = req.params.email
+  const score = await Score.findAll({ where: { email:email } });
   res.status(200).send(score);
 };
 
