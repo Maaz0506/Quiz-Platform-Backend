@@ -43,5 +43,5 @@ module.exports = {
   addQuestion,
   getAllQuestions,
   questionById,
-  questionsWithAnswers
+  // questionsWithAnswers
 };
